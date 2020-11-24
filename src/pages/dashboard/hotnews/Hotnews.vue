@@ -84,6 +84,7 @@ import HeadInfo from '@/components/tool/HeadInfo'
 import Radar from '@/components/chart/Radar'
 import {mapState} from 'vuex'
 import {request, METHOD} from '@/utils/request'
+import {getToday} from '@/services/dashboard'
 
 export default {
   name: 'WorkPlace',
@@ -113,7 +114,7 @@ export default {
         this.projects = res.data
         this.loading = false
       })
-    request('/today/v1', METHOD.GET).then(res => {
+    getToday().then(res => {
         console.log(res)
     })
   }
