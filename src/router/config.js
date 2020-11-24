@@ -48,11 +48,6 @@ const options = {
               path: 'analysis',
               name: '分析页',
               component: () => import('@/pages/dashboard/analysis'),
-            },
-            {
-              path: 'hotnews',
-              name: '最新消息',
-              component: () => import('@/pages/dashboard/hotnews'),
             }
           ]
         },
