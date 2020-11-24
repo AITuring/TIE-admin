@@ -43,33 +43,31 @@
             </a-list>
           </a-card>
         </a-col>
+        <!-- 评分模块 -->
         <a-col style="padding: 0 12px" :xl="8" :lg="24" :md="24" :sm="24" :xs="24">
-          <a-card :title="$t('access')" style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
-            <div class="item-group">
-              <a>操作一</a>
-              <a>操作二</a>
-              <a>操作三</a>
-              <a>操作四</a>
-              <a>操作五</a>
-              <a>操作六</a>
-              <a-button size="small" type="primary" ghost icon="plus">{{$t('add')}}</a-button>
-            </div>
+          <a-card :title="$t('access')" style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}" class="rate">
+            <div class="rateboard" style="margin: 16px 40px">
+              <a-rate v-model="selectValue" :tooltips="selectDesc" />
+              <span class="ant-rate-text">{{ selectDesc[selectValue - 1] }}</span>
+          </div>
           </a-card>
+          <!-- TODO 这块样式可以稍微优化 -->
           <a-card :loading="loading" :title="`XX ${$t('degree')}`" style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
             <div style="min-height: 400px;">
               <radar />
             </div>
           </a-card>
-          <a-card :loading="loading" :title="$t('team')" :bordered="false">
-            <div class="members">
-              <a-row>
-                <a-col :span="12" v-for="(item, index) in teams" :key="index">
-                  <a>
-                    <a-avatar size="small" :src="item.avatar" />
-                    <span class="member">{{item.name}}</span>
-                  </a>
-                </a-col>
-              </a-row>
+          <a-card :loading="loading" :title="$t('temperature')" :bordered="false">
+            <div style="height: 200px">
+              <!-- <div style="display: inline-block;height: 300px;marginLeft: 70px">
+                <a-slider vertical :default-value="30" />
+              </div>
+              <div style="display: inline-block;height: 300px;marginLeft: 70px">
+                <a-slider vertical range :step="10" :default-value="[20, 50]" />
+              </div> -->
+              <div style="display: inline-block;height: 200px;marginLeft: 100px">
+                <a-slider vertical range :marks="marks" :default-value="[26, 37]" />
+              </div>
             </div>
           </a-card>
         </a-col>
@@ -84,7 +82,7 @@ import HeadInfo from '@/components/tool/HeadInfo'
 import Radar from '@/components/chart/Radar'
 import {mapState} from 'vuex'
 import {request, METHOD} from '@/utils/request'
-import {getToday} from '@/services/dashboard'
+// import {getToday} from '@/services/dashboard'
 
 export default {
   name: 'WorkPlace',
@@ -92,6 +90,8 @@ export default {
   i18n: require('./i18n'),
   data () {
     return {
+      selectValue: 3,
+      selectDesc: ['terrible', 'bad', 'normal', 'good', 'wonderful'],
       projects: [],
       loading: true,
       activities: [],
@@ -99,8 +99,25 @@ export default {
       welcome: {
         timeFix: '',
         message: ''
-      }
+      },
+      marks: {
+        0: '0°C',
+        26: '26°C',
+        37: '37°C',
+        100: {
+          style: {
+            color: '#f50',
+          },
+          label: <strong>100°C</strong>,
+        },
+      },
     }
+  },
+  methods: {
+    handleDisabledChange(disabled) {
+      this.disabled = disabled;
+    },
+
   },
   computed: {
     ...mapState('account', {currUser: 'user'}),
@@ -114,9 +131,9 @@ export default {
         this.projects = res.data
         this.loading = false
       })
-    getToday().then(res => {
-        console.log(res)
-    })
+    // getToday().then(res => {
+    //     console.log(res)
+    // })
   }
 }
 </script>
