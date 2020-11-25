@@ -10,7 +10,8 @@ module.exports = {
       dynamic: '动态',
       degree: '指数',
       temperature: '温度调整',
-      add: '添加'
+      add: '添加',
+      comment: '评论',
     },
     HK: {
       project: '項目數',
@@ -22,7 +23,8 @@ module.exports = {
       dynamic: '動態',
       degree: '指數',
       temperature: '溫度調整',
-      add: '添加'
+      add: '添加',
+      comment: '評論',
     },
     US: {
       project: 'Project',
@@ -34,7 +36,8 @@ module.exports = {
       dynamic: 'Dynamic',
       degree: 'degree',
       temperature: 'Temperature adjustment',
-      add: 'Add'
+      add: 'Add',
+      comment: 'Comment',
     },
   }
 }

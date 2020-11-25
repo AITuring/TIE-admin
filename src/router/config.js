@@ -51,7 +51,7 @@ const options = {
             },
             {
               path: 'hotnews',
-              name: '今日新闻',
+              name: '所有项目',
               component: () => import('@/pages/dashboard/hotnews'),
             }
           ]
@@ -240,14 +240,6 @@ const options = {
             link: 'https://www.antdv.com/docs/vue/introduce-cn/'
           }
         },
-        {
-          name: '使用文档',
-          path: 'document',
-          meta: {
-            icon: 'file-word',
-            link: 'https://iczer.gitee.io/vue-antd-admin-docs/'
-          }
-        }
       ]
     },
   ]
