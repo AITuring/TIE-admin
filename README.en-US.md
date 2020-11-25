@@ -1,5 +1,5 @@
 [简体中文](./README.md) | English
-<h1 align="center">Vue Antd Admin</h1>
+<h1 align="center">TIE Admin</h1>
 
 <div align="center">
   

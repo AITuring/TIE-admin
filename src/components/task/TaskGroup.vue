@@ -3,7 +3,7 @@
     <div class="task-head">
       <h3 class="title"><span v-if="count">{{count}}</span>{{title}}</h3>
       <div class="actions" style="float: right">
-        <a-icon class="add" type="plus" draggable="true"/>
+        <a-icon class="add" type="plus" draggable="true" @click="addContent()"/>
         <a-icon class="more" style="margin-left: 8px" type="ellipsis" />
       </div>
     </div>
@@ -31,10 +31,16 @@ const dragOptions = {
 export default {
   name: 'TaskGroup',
   components: {Draggable},
-  props: ['title', 'group'],
+  props: ['title', 'group', 'list'],
   data () {
     return {
       dragOptions: {...dragOptions, group: this.group}
+    }
+  },
+  methods: {
+    addContent() {
+      // TODO 需要重构组件 
+      // this.list.push('hhh')
     }
   },
   computed: {

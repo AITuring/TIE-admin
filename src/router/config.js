@@ -206,7 +206,7 @@ const options = {
           children: [
             {
               path: 'taskCard',
-              name: '任务卡片',
+              name: '任务看板',
               component: () => import('@/pages/components/TaskCard')
             },
             {
