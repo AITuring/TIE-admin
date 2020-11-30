@@ -219,11 +219,11 @@ const options = {
               name: '高级表格',
               component: () => import('@/pages/components/table')
             },
-            {
-              path: 'editor',
-              name: '文本编辑器',
-              component: () => import('@/pages/components/editor')
-            }
+            // {
+            //   path: 'editor',
+            //   name: '文本编辑器',
+            //   component: () => import('@/pages/components/editor')
+            // }
           ]
         },
         {
